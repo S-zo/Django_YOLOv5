@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  {% include "screen_upper.html" %}
+<meta http-equiv="refresh" content="5" />
+
+    
+<body>
+
+<div id="pages_maincontent">
+      
+<h2 class="page_title">Issue Capture</h2>
+			  
+    <div class="page_single layout_fullwidth">	 
+    
+      <ul id="photoslist" class="photo_gallery_13">
+             {% for photo in photos %}
+          
+          <li>
+              <center><span style="font: italic bold 2em; color:red;">{{photo.status}}</span></center>
+              <a rel="gallery-3" href="/static/imageimage/{{photo.photo_name}}" title="Photo title" class="swipebox">
+                  <img src="/static/imageimage/{{photo.photo_name}}" alt="image"/>
+                  <font size="1em">
+                      {{photo.photo_name}}
+                  </font>
+              </a>
+          </li>
+                         {% endfor %}
+<div class="clearleft"></div>
+      </ul>   
+
+
+
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,521 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+   {% include "screen_upper.html" %}
+
+    
+       <body>
+           
+           
+           <style>
+    
+.nav-tabs .nav-item .nav-link:not(.active) {
+  color: #BDBDBD;
+  /* background-color: white;  */
+
+}
+.nav-tabs .nav-item .nav-link {
+  color: rgb(41,41,83);
+  /* background-color: black;     */
+}
+    
+    
+.bg-outer {
+  background: #F2F2F2;
+}
+
+.navbar-brand2:not(.active) {
+    color: #BDBDBD;
+    font-weight: bold;
+    text-align:center;
+    
+               }
+
+</style>
+
+           
+                <div id="pages_maincontent">
+      
+              <h2 class="page_title">SENSOR</h2>
+			  
+<div class="page_single layout_fullwidth">	 
+
+
+    
+               <div class="container">
+      <div class="row">
+        <div class="col">
+
+          <ul class="nav nav-tabs">
+              <li class="nav-item">
+    <a class="nav-link active" data-toggle="tab" href="#EM">EM</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" data-toggle="tab" href="#MFL">MFL</a>
+  </li>
+    
+  <li class="nav-item">
+    <a class="nav-link" data-toggle="tab" href="#MFL_realtime">MFL_realtime</a>
+  </li>
+</ul>
+
+
+<div class="tab-content">
+  <div class="tab-pane fade show active" id="EM">
+ 
+
+<div class="container">
+<div class="row">
+<div class="col-md-12">
+
+
+<canvas id="myChart" width="400" height="400"></canvas>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+
+<script>
+
+var timeFormat = 'MM/DD/YYYY HH:mm';
+
+function newDate(days) {
+    return moment().add(days, 'd').toDate();
+}
+
+function newDateString(days) {
+    return moment().add(days, 'd').format(timeFormat);
+}
+
+
+var ctx = document.getElementById('myChart').getContext('2d');
+var myChart = new Chart(ctx, {
+    type: 'line',
+    options : options,
+    data: {
+        labels: {{e_line_chart.0|safe}},
+        datasets: [
+            {
+            label: '# sensor1',
+      fill: true,
+      lineTension: 0.1,
+      backgroundColor: "rgba(255,255,255,0.3)",
+      borderColor: "yellow",
+      borderCapStyle: 'butt',
+      borderDash: [],
+      borderDashOffset: 0.0,
+      borderJoinStyle: 'miter',
+      pointBorderColor: "white",
+      pointBackgroundColor: "black",
+      pointBorderWidth: 1,
+      pointHoverRadius: 8,
+      pointHoverBackgroundColor: "brown",
+      pointHoverBorderColor: "yellow",
+      pointHoverBorderWidth: 2,
+      pointRadius: 0,
+      pointHitRadius: 10,
+            data: {{e_line_chart.1|safe}},
+        },
+            {
+            label: '# sensor2',
+      fill: false,
+      lineTension: 0.1,
+      backgroundColor: "rgba(225,0,0,0.3)",
+      borderColor: "red", // The main line color
+      borderCapStyle: 'square',
+      borderDash: [], // try [5, 15] for instance
+      borderDashOffset: 0.0,
+      borderJoinStyle: 'miter',
+      pointBorderColor: "black",
+      pointBackgroundColor: "white",
+      pointBorderWidth: 1,
+      pointHoverRadius: 8,
+      pointHoverBackgroundColor: "yellow",
+      pointHoverBorderColor: "brown",
+      pointHoverBorderWidth: 2,
+      pointRadius: 0,
+      pointHitRadius: 10,
+            data: {{e_line_chart.2|safe}},
+        },
+
+            {
+            label: '# sensor3',
+      fill: true,
+      lineTension: 0.1,
+      backgroundColor: "rgba(255,255,255,0.3)",
+      borderColor: "blue",
+      borderCapStyle: 'butt',
+      borderDash: [],
+      borderDashOffset: 0.0,
+      borderJoinStyle: 'miter',
+      pointBorderColor: "white",
+      pointBackgroundColor: "black",
+      pointBorderWidth: 1,
+      pointHoverRadius: 8,
+      pointHoverBackgroundColor: "brown",
+      pointHoverBorderColor: "yellow",
+      pointHoverBorderWidth: 2,
+      pointRadius: 0,
+      pointHitRadius: 10,
+            data: {{e_line_chart.3|safe}},
+        },
+            {
+            label: '# sensor4',
+      fill: true,
+      lineTension: 0.1,
+      backgroundColor: "rgba(255,255,255,0.3)",
+      borderColor: "dark",
+      borderCapStyle: 'butt',
+      borderDash: [],
+      borderDashOffset: 0.0,
+      borderJoinStyle: 'miter',
+      pointBorderColor: "white",
+      pointBackgroundColor: "black",
+      pointBorderWidth: 1,
+      pointHoverRadius: 8,
+      pointHoverBackgroundColor: "brown",
+      pointHoverBorderColor: "yellow",
+      pointHoverBorderWidth: 2,
+      pointRadius: 0,
+      pointHitRadius: 10,
+            data: {{e_line_chart.4|safe}},
+        },
+            {
+            label: '# sensor5',
+      fill: true,
+      lineTension: 0.1,
+      backgroundColor: "rgba(255,255,255,0.3)",
+      borderColor: "gray",
+      borderCapStyle: 'butt',
+      borderDash: [],
+      borderDashOffset: 0.0,
+      borderJoinStyle: 'miter',
+      pointBorderColor: "white",
+      pointBackgroundColor: "black",
+      pointBorderWidth: 1,
+      pointHoverRadius: 8,
+      pointHoverBackgroundColor: "brown",
+      pointHoverBorderColor: "yellow",
+      pointHoverBorderWidth: 2,
+      pointRadius: 0,
+      pointHitRadius: 10,
+            data: {{e_line_chart.5|safe}},
+        },
+       
+     
+        ],
+    },
+
+});
+
+var options = {
+  scales: {        xAxis: {
+        pointOnColumn: false,
+        showLabel: false
+    },
+            yAxes: [{
+                ticks: {
+                    beginAtZero:true
+                },
+                scaleLabel: {
+                     display: true,
+                     labelString: 'Moola',
+                     fontSize: 20
+                  }
+            }]
+        }
+};
+</script>
+            </div>
+        </div>
+    </div>
+  
+  </div>
+
+
+
+    <div class="tab-pane fade" id="MFL">
+
+
+      
+
+<div class="container">
+<div class="row">
+<div class="col-md-12">
+
+
+<canvas id="myChart2" width="400" height="400"></canvas>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+
+<script>
+
+
+
+var ctx = document.getElementById('myChart2').getContext('2d');
+var myChart2 = new Chart(ctx, {
+    type: 'line',
+    options : options,
+    data: {
+        labels: {{m_line_chart.0|safe}},
+        datasets: [
+            {
+            label: '# sensor1',
+      fill: true,
+      lineTension: 0.1,
+      backgroundColor: "rgba(255,255,255,0.3)",
+      borderColor: "yellow",
+      borderCapStyle: 'butt',
+      borderDash: [],
+      borderDashOffset: 0.0,
+      borderJoinStyle: 'miter',
+      pointBorderColor: "white",
+      pointBackgroundColor: "black",
+      pointBorderWidth: 1,
+      pointHoverRadius: 8,
+      pointHoverBackgroundColor: "brown",
+      pointHoverBorderColor: "yellow",
+      pointHoverBorderWidth: 2,
+      pointRadius: 0,
+      pointHitRadius: 10,
+            data: {{m_line_chart.1|safe}},
+        },
+            {
+            label: '# sensor2',
+      fill: false,
+      lineTension: 0.1,
+      backgroundColor: "rgba(225,0,0,0.3)",
+      borderColor: "red", // The main line color
+      borderCapStyle: 'square',
+      borderDash: [], // try [5, 15] for instance
+      borderDashOffset: 0.0,
+      borderJoinStyle: 'miter',
+      pointBorderColor: "black",
+      pointBackgroundColor: "white",
+      pointBorderWidth: 1,
+      pointHoverRadius: 8,
+      pointHoverBackgroundColor: "yellow",
+      pointHoverBorderColor: "brown",
+      pointHoverBorderWidth: 2,
+      pointRadius: 0,
+      pointHitRadius: 10,
+            data: {{m_line_chart.2|safe}},
+        },
+
+            {
+            label: '# sensor3',
+      fill: true,
+      lineTension: 0.1,
+      backgroundColor: "rgba(255,255,255,0.3)",
+      borderColor: "blue",
+      borderCapStyle: 'butt',
+      borderDash: [],
+      borderDashOffset: 0.0,
+      borderJoinStyle: 'miter',
+      pointBorderColor: "white",
+      pointBackgroundColor: "black",
+      pointBorderWidth: 1,
+      pointHoverRadius: 8,
+      pointHoverBackgroundColor: "brown",
+      pointHoverBorderColor: "yellow",
+      pointHoverBorderWidth: 2,
+      pointRadius: 0,
+      pointHitRadius: 10,
+            data: {{m_line_chart.3|safe}},
+        },
+            {
+            label: '# sensor4',
+      fill: true,
+      lineTension: 0.1,
+      backgroundColor: "rgba(255,255,255,0.3)",
+      borderColor: "dark",
+      borderCapStyle: 'butt',
+      borderDash: [],
+      borderDashOffset: 0.0,
+      borderJoinStyle: 'miter',
+      pointBorderColor: "white",
+      pointBackgroundColor: "black",
+      pointBorderWidth: 1,
+      pointHoverRadius: 8,
+      pointHoverBackgroundColor: "brown",
+      pointHoverBorderColor: "yellow",
+      pointHoverBorderWidth: 2,
+      pointRadius: 0,
+      pointHitRadius: 10,
+            data: {{m_line_chart.4|safe}},
+        },
+            {
+            label: '# sensor5',
+      fill: true,
+      lineTension: 0.1,
+      backgroundColor: "rgba(255,255,255,0.3)",
+      borderColor: "gray",
+      borderCapStyle: 'butt',
+      borderDash: [],
+      borderDashOffset: 0.0,
+      borderJoinStyle: 'miter',
+      pointBorderColor: "white",
+      pointBackgroundColor: "black",
+      pointBorderWidth: 1,
+      pointHoverRadius: 8,
+      pointHoverBackgroundColor: "brown",
+      pointHoverBorderColor: "yellow",
+      pointHoverBorderWidth: 2,
+      pointRadius: 0,
+      pointHitRadius: 10,
+            data: {{m_line_chart.5|safe}},
+        },
+            {
+            label: '# sensor6',
+      fill: true,
+      lineTension: 0.1,
+      backgroundColor: "rgba(255,255,255,0.3)",
+      borderColor: "pink",
+      borderCapStyle: 'butt',
+      borderDash: [],
+      borderDashOffset: 0.0,
+      borderJoinStyle: 'miter',
+      pointBorderColor: "white",
+      pointBackgroundColor: "black",
+      pointBorderWidth: 1,
+      pointHoverRadius: 8,
+      pointHoverBackgroundColor: "brown",
+      pointHoverBorderColor: "yellow",
+      pointHoverBorderWidth: 2,
+      pointRadius: 0,
+      pointHitRadius: 10,
+            data: {{m_line_chart.6|safe}},
+        }
+        ],
+    },
+});
+
+var options = {
+  scales: {        xAxis: {
+        pointOnColumn: false,
+        showLabel: false
+    },
+            yAxes: [{
+                ticks: {
+                    beginAtZero:true
+                },
+                scaleLabel: {
+                     display: true,
+                     labelString: 'Moola',
+                     fontSize: 20
+                  }
+            }]
+        }
+};
+</script>
+            </div>
+        </div>
+    </div>
+ </div>
+    
+
+    <div class="tab-pane fade" id="MFL_realtime">
+
+
+<div class="container">
+<div class="row">
+<div class="col-md-12">
+
+
+<canvas id="myChart3" width="400" height="400"></canvas>
+
+
+    
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+
+    <script>
+
+    let socket =new WebSocket('wss://smartinsideai.run.goorm.io/ws/polData/');
+    socket.onopen =function(e){
+ 
+    };
+
+    socket.onmessage = function(e){
+        console.log(e.data);
+        var recData=JSON.parse(e.data);
+        dataObjNew=dataObj['data']['datasets'][0]['data'];
+        dataObjNew.shift();
+        dataObjNew.push(recData.value);
+        dataObj['data']['datasets'][0]['data']=dataObjNew;
+        window.myLine.update();
+
+    };
+
+    socket.onclose = function(e){
+
+    };
+    
+    </script>
+
+    <div style="max-width: 400px; max-height: 200px;">
+        <canvas id="myChart3" width="400" height="200"></canvas>
+    </div>
+
+    
+    <script>
+    var dataObj={
+        type: 'line',
+        data: {
+            labels: ["","","","","","","","","","","",""],
+            datasets: [{
+                label: 'Real time data',
+                fill: true,
+      lineTension: 0.1,
+      backgroundColor: "rgba(255,255,255,0.3)",
+      borderColor: "red",
+      borderCapStyle: 'butt',
+      borderDash: [],
+      borderDashOffset: 0.0,
+      borderJoinStyle: 'miter',
+      pointBorderColor: "white",
+      pointBackgroundColor: "black",
+      pointBorderWidth: 1,
+      pointHoverRadius: 8,
+      pointHoverBackgroundColor: "brown",
+      pointHoverBorderColor: "yellow",
+      pointHoverBorderWidth: 2,
+      pointRadius: 0,
+      pointHitRadius: 10,
+                data: [4.9, 4.95, 4.94, 4.945, 4.947, 4.943, 4.9, 4.95, 4.94, 4.945, 4.947, 4.943],
+            }]
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        min: 4.9,
+						max: 5,
+						fontSize : 14,
+                      
+                    }
+                }]
+            }
+        }
+    }
+    var ctx = document.getElementById('myChart3').getContext('2d');
+    window.myLine = new Chart(ctx,dataObj );
+    </script>
+    
+    
+    
+    
+    
+    
+    
+    
+          </div>
+                   </div>
+    </div>
+                    </div>
+           </div>
+          </div>
+                   </div>
+    </div>
+                    </div>
+           </div>
+          
+  </body>
+</html> 

@@ -1,0 +1,211 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+   {% include "screen_upper.html" %}
+
+    
+<body>
+
+<script>setInterval(function() {document.getElementById("nomask").click();}, 1000);</script> 
+<style>
+    
+.nav-tabs .nav-item .nav-link:not(.active) {
+  color: #BDBDBD;
+  /* background-color: white;  */
+
+}
+.nav-tabs .nav-item .nav-link {
+  color: rgb(41,41,83);
+  /* background-color: black;     */
+}
+    
+    
+.bg-outer {
+  background: #F2F2F2;
+}
+
+.navbar-brand2:not(.active) {
+    color: #BDBDBD;
+    font-weight: bold;
+    text-align:center;
+    
+               }
+
+</style>
+
+<div id="pages_maincontent">
+      
+<h2 class="page_title">CCTV</h2>
+			  
+    <div class="page_single layout_fullwidth">	 
+ 
+        <div class="container">
+          <div class="row">
+             <div class="col" style="float: none; margin: 0 auto;">
+
+              <ul class="nav nav-tabs">
+              <li class="nav-item">
+                <a class="nav-link active" data-toggle="tab" href="#area1">Area 1</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#area2">Area 2</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#area3">Area 3</a>
+              </li>
+                          <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#area3">Area 4</a>
+              </li>
+            </ul>
+   
+            <div class="tab-content">
+                
+                
+                   <!-- area1 -->
+              <div class="tab-pane fade show active" id="area1">
+                      
+                    <div style="width:100% !important; height:auto !important; border:1px solid green; float:left;">
+   <img src="http://13.90.208.191/detectme/" align="center" style="width:100%;" />
+                    </div>
+                  
+                  
+                    <div class = "container">
+      <div class="row">
+          
+          <div class="col-6">
+ <div class="card bg-white text-warning shadow">
+    <center><div class="logo_text">
+        No mask
+    </div> </center>
+</div>
+                
+          </div>    
+        
+          <div class="col-6">
+              <div class="logo_text">
+        <button type="button" id='nomask' class="btn btn-white btn-lg"></button>
+    </div>
+          </div>
+       
+</div>
+ </div>
+    
+     <div class = "container">
+      <div class="row">
+          
+          <div class="col-6">
+ <div class="card bg-white text-warning shadow">
+    <center><div class="logo_text">
+        No helmet
+    </div> </center>
+</div>
+                
+          </div>    
+        
+          <div class="col-6">
+              <div class="logo_text">
+        <button type="button" id='nohelmet' class="btn btn-white btn-lg"></button>
+    </div>
+          </div>
+       
+</div>
+ </div>
+    
+     <div class = "container">
+      <div class="row">
+          
+          <div class="col-6">
+ <div class="card bg-white text-warning shadow">
+    <center><div class="logo_text">
+        Smoke
+    </div> </center>
+</div>
+                
+          </div>    
+        
+          <div class="col-6">
+              <div class="logo_text">
+        <button type="button" id='smoke' class="btn btn-white btn-lg"></button>
+    </div>
+          </div>
+       
+</div>
+ </div>
+    
+     <div class = "container">
+      <div class="row">
+          
+          <div class="col-6">
+ <div class="card bg-white text-danger shadow">
+    <center><div class="logo_text">
+        Danger
+    </div> </center>
+</div>
+                
+          </div>    
+        
+          <div class="col-6">
+              <div class="logo_text">
+        <button type="button" id='danger' class="btn btn-white btn-lg"></button>
+    </div>
+          </div>
+       
+</div>
+ </div>
+   </div>
+            
+            
+               <!-- area2 -->
+              <div class="tab-pane fade" id="area2">
+               
+ <div style="width:100% !important; height:auto !important; border:1px solid green; float:right;">
+   <video src="/static/video/object_detect.mp4" controls loop muted autoplay allowfullscreen="" height=auto !important; width=100% !important; frameborder="0">재생할 수 없다</video> 
+</div>
+
+              </div>
+          
+          
+                         <!-- area3 -->
+              <div class="tab-pane fade" id="area3">     
+                    
+<div style="width:100% !important; height:auto !important; border:1px solid green; float:right;">
+   <video src="/static/video/pose_estimation.mp4" controls loop muted autoplay allowfullscreen="" height=auto !important; width=100% !important; frameborder="0">재생할 수 없다</video> 
+</div>
+             
+              </div>
+        
+                       <!-- area4 -->
+              <div class="tab-pane fade" id="area2">
+             
+                    <div style="width:48% !important; height:auto !important; border:1px solid green; float:left;">
+   <img src="http://13.90.208.191/detectme/" align="center" style="width:300px;" />
+                    </div>
+                     
+              </div>
+  
+       
+    <!-- cctv -->
+<!--
+    <h4>map</h4>
+    <table>
+        <tr>
+            <td width="50%">
+                <img src="https://hu-unytv.run.goorm.io/video/test2/" style="width:200px;" />
+            </td>
+            <td width="50%">
+
+            </td>
+        </tr>
+    </table>
+-->
+             </div>
+          </div>
+        </div>
+       </div>
+    
+      </div>
+    </div>
+          
+</body>
+</html> 
+      

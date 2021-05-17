@@ -1,0 +1,52 @@
+{% load static %}
+<!doctype html>
+<html lang="en">  
+
+{% include "screen_upper.html" %}
+    
+<body>
+    
+    
+<script>setInterval(function() {document.getElementById("smoke").click();}, 1000);</script> 
+    
+             <div id="pages_maincontent">
+      
+              <h2 class="page_title">ISSUE</h2>
+			  
+<div class="page_single layout_fullwidth">	 
+    
+<div class="card bg-white text-black shadow">
+    <div class="card-body">
+        smoke
+        <button type="button" id='smoke' class="btn btn-white btn-lg"></button>
+    </div>
+ </div>
+
+<div class="card bg-white  text-black shadow">
+    <div class="card-body">
+        nohelmet
+        <button type="button" id='nohelmet' class="btn btn-white btn-lg"></button>
+     </div>
+ </div>
+
+ <div class="card bg-white  text-black shadow">
+    <div class="card-body">
+        nomask
+        <button type="button" id='nomask' class="btn btn-white btn-lg"></button>
+     </div>
+ </div>
+   
+ <div class="card bg-danger text-white shadow">
+    <div class="card-body">
+        danger
+        <button type="button" id='danger' class="btn btn-danger btn-lg"></button>
+     </div>
+ </div>
+
+
+                 </div>
+           </div>
+    </body>
+</html>
+
+
